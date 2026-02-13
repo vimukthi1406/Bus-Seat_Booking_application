@@ -2,11 +2,24 @@ pipeline {
     agent any
 
     environment {
-        DOCKER_COMPOSE_CMD = 'docker compose'
+        // Use local binary inside workspace so we don't depend on system installation
+        DOCKER_COMPOSE_CMD = './docker-compose'
         DOCKER_CREDENTIALS_ID = 'docker-hub-bus-id'
     }
 
     stages {
+        stage('Setup Docker Compose') {
+            steps {
+                script {
+                    sh '''
+                        curl -SL https://github.com/docker/compose/releases/download/v2.29.2/docker-compose-linux-x86_64 -o docker-compose
+                        chmod +x docker-compose
+                        ./docker-compose version
+                    '''
+                }
+            }
+        }
+
         stage('Checkout') {
             steps {
                 checkout scm
