@@ -2,6 +2,7 @@ version: '3.8'
 
 services:
   server:
+    image: vimukthi1406/bus-seat-booking-application:server
     build: ./server
     ports:
       - "3000:3000"
@@ -11,6 +12,7 @@ services:
       - PORT=3000
 
   client:
+    image: vimukthi1406/bus-seat-booking-application:client
     build: ./client
     ports:
       - "8080:80"
