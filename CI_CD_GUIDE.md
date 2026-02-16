@@ -19,9 +19,9 @@ Your application is now containerized using Docker.
     ```bash
     docker-compose up --build
     ```
-4.  Access the app at `http://localhost:8080`.
-    -   Frontend: `http://localhost:8080`
-    -   Backend API: `http://localhost:3000`
+4.  Access the app at `http://localhost:8081`.
+    -   Frontend: `http://localhost:8081`
+    -   Backend API: `http://localhost:4000`
 
 ---
 
@@ -77,5 +77,5 @@ To trigger builds automatically on push:
 
 ## Troubleshooting
 
--   **Port Conflicts**: If port 3000 or 8080 is in use, verify `docker-compose.yml` port mappings.
+-   **Port Conflicts**: If port 4000 or 8081 is in use, verify `docker-compose.yml` port mappings.
 -   **Permission Denied**: If Jenkins fails with docker permission errors, add the jenkins user to the docker group: `sudo usermod -aG docker jenkins`.
