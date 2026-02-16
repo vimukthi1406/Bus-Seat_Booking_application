@@ -24,7 +24,7 @@ const AdminPage = () => {
 
     const fetchBookings = async () => {
         try {
-            const res = await axios.get('http://localhost:3000/api/bookings');
+            const res = await axios.get('http://localhost:4000/api/bookings');
             setBookings(res.data.data);
             setLoading(false);
         } catch (err) {
@@ -35,7 +35,7 @@ const AdminPage = () => {
     const handleAddRoute = async (e) => {
         e.preventDefault();
         try {
-            await axios.post('http://localhost:3000/api/routes', newRoute);
+            await axios.post('http://localhost:4000/api/routes', newRoute);
             setRouteMessage('Route added successfully!');
             setNewRoute({ origin: '', destination: '', date: '', departure_time: '', arrival_time: '', price: '' });
             setTimeout(() => setRouteMessage(''), 3000);
@@ -67,7 +67,7 @@ const AdminPage = () => {
 
     const fetchAvailableSeats = async (routeId, currentSeat) => {
         try {
-            const res = await axios.get(`http://localhost:3000/api/bookings/${routeId}`);
+            const res = await axios.get(`http://localhost:4000/api/bookings/${routeId}`);
             const booked = res.data.data; // Array of seat numbers
 
             // Total seats assumed 40 as per standard layout
@@ -85,7 +85,7 @@ const AdminPage = () => {
     const handleUpdateBooking = async (e) => {
         e.preventDefault();
         try {
-            await axios.put(`http://localhost:3000/api/bookings/${editingBooking.id}`, {
+            await axios.put(`http://localhost:4000/api/bookings/${editingBooking.id}`, {
                 passenger_name: editingBooking.passenger_name,
                 passenger_phone: editingBooking.passenger_phone, // Note: fetchBookings needs to return phone too
                 seat_number: editingBooking.seat_number
@@ -102,7 +102,7 @@ const AdminPage = () => {
 
     const handleDeleteBooking = async (id) => {
         try {
-            await axios.delete(`http://localhost:3000/api/bookings/${id}`);
+            await axios.delete(`http://localhost:4000/api/bookings/${id}`);
             fetchBookings(); // Refresh list
             alert('Booking deleted successfully');
         } catch (err) {
@@ -324,7 +324,7 @@ const RoutesManager = () => {
 
     const fetchRoutes = async () => {
         try {
-            const res = await axios.get('http://localhost:3000/api/routes');
+            const res = await axios.get('http://localhost:4000/api/routes');
             setRoutes(res.data.data);
             setLoading(false);
         } catch (err) {
@@ -336,7 +336,7 @@ const RoutesManager = () => {
     const toggleStatus = async (route) => {
         const newStatus = route.status === 'cancelled' ? 'scheduled' : 'cancelled';
         try {
-            await axios.put(`http://localhost:3000/api/routes/${route.id}/status`, { status: newStatus });
+            await axios.put(`http://localhost:4000/api/routes/${route.id}/status`, { status: newStatus });
             // Optimistic update
             setRoutes(routes.map(r => r.id === route.id ? { ...r, status: newStatus } : r));
         } catch (err) {

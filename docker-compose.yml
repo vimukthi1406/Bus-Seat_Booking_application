@@ -3,11 +3,11 @@ services:
     image: vimukthi01/bus-seat-booking-application:server
     build: ./server
     ports:
-      - "3000:3000"
+      - "4000:4000"
     volumes:
-      - ./server/bus_booking.db:/app/bus_booking.db
+      - ./server/data:/app/data
     environment:
-      - PORT=3000
+      - PORT=4000
 
   client:
     image: vimukthi01/bus-seat-booking-application:client

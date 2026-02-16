@@ -24,8 +24,8 @@ const BookingPage = () => {
         const fetchData = async () => {
             try {
                 const [routeRes, bookingsRes] = await Promise.all([
-                    axios.get(`http://localhost:3000/api/routes/${routeId}`),
-                    axios.get(`http://localhost:3000/api/bookings/${routeId}`)
+                    axios.get(`http://localhost:4000/api/routes/${routeId}`),
+                    axios.get(`http://localhost:4000/api/bookings/${routeId}`)
                 ]);
                 setRoute(routeRes.data.data);
                 setBookedSeats(bookingsRes.data.data);
@@ -55,7 +55,7 @@ const BookingPage = () => {
                 passenger_phone: phone
             };
 
-            const res = await axios.post('http://localhost:3000/api/bookings', payload);
+            const res = await axios.post('http://localhost:4000/api/bookings', payload);
             setSuccess(res.data.booking_id);
             setSubmitting(false);
             // Refresh booked seats in background to show red immediately if we stayed (but we show success)

@@ -13,7 +13,7 @@ const LoginPage = () => {
         e.preventDefault();
         setError('');
         try {
-            const res = await axios.post('http://localhost:3000/api/login', { username, password });
+            const res = await axios.post('http://localhost:4000/api/login', { username, password });
             // Save user to localStorage
             localStorage.setItem('user', JSON.stringify(res.data.user));
             // Trigger a storage event or use Context in a real app to update UI immediately

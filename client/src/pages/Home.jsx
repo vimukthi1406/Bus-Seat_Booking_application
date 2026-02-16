@@ -18,7 +18,7 @@ const Home = () => {
 
     const fetchRoutes = async () => {
         try {
-            const response = await axios.get('http://localhost:3000/api/routes');
+            const response = await axios.get('http://localhost:4000/api/routes');
             setRoutes(response.data.data);
             setLoading(false);
         } catch (error) {

@@ -13,7 +13,7 @@ const RegisterPage = () => {
         e.preventDefault();
         setError('');
         try {
-            await axios.post('http://localhost:3000/api/register', { username, password });
+            await axios.post('http://localhost:4000/api/register', { username, password });
             alert('Registration successful! Please login.');
             navigate('/login');
         } catch (err) {
