@@ -16,7 +16,7 @@ const Navbar = () => {
             <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', height: '4rem' }}>
                 <Link to="/" className="flex items-center gap-2 font-bold text-xl text-primary">
                     <Bus size={28} />
-                    <span>BusBooker</span>
+                    <span>BusBooker Sri Lanka</span>
                 </Link>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
                     <Link to="/" className="font-medium hover:text-primary">Find Bus</Link>
