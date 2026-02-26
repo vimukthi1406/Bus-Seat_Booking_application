@@ -63,6 +63,8 @@ pipeline {
         stage('Deploy') {
             steps {
                 script {
+                    sh "${DOCKER_COMPOSE_CMD} down"
+                    
                     sh "${DOCKER_COMPOSE_CMD} up -d"
                 }
             }
